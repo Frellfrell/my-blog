@@ -1,0 +1,23 @@
+.nav {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #0077cc;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  background: #e0f3ff;
+}
+
+.active {
+  font-weight: bold;
+  color: #fff !important;
+  background: #0077cc;
+}

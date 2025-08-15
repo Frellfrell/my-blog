@@ -1,0 +1,26 @@
+.postsList {
+  list-style-type: disc; /* точки */
+  padding-left: 20px; /* отступ слева для маркеров */
+}
+.posts h1 {
+  color: #333;
+}
+
+.posts ul {
+  
+  padding: 0;
+}
+
+.posts li {
+  margin-bottom: 15px;
+}
+
+.posts a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+.posts a:hover {
+  text-decoration: underline;
+}
+
