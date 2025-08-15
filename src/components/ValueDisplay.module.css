@@ -1,0 +1,8 @@
+.value-display p {
+  margin: 4px 0;
+  font-size: 16px;
+}
+
+.value-display strong {
+  color: #222;
+}
