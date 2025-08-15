@@ -7,6 +7,7 @@ import ValueDisplay from "../components/ValueDisplay";
   const { id } = useParams();
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState("");
+  const [postTitle, setPostTitle] = useState(""); // заголовок поста
   const [postContent, setPostContent] = useState(""); // контент для id !== 0
   const [loading, setLoading] = useState(false);
 
@@ -25,16 +26,20 @@ import ValueDisplay from "../components/ValueDisplay";
   const API_URL = "https://6890e3a6944bf437b597aa06.mockapi.io/api/v1/posts";
 
   useEffect(() => {
-    if (id !== "0") {
-      setLoading(true);
+    if (id === "0") {
+       setLoading(false); // статический пост не нужно загружать
+    } else {
+      setLoading(true); // начинаем загрузку для динамического поста
       fetch(`${API_URL}/${id}`)
-        .then(res => res.json())
-        .then(data => {
-          setPostContent(data.content || "Post not found.");
+        .then((res) => res.json())
+        .then((data) => {
+           setPostTitle(data.title || `Post ${id}`);
+          setPostContent(data.content || "");
           setLoading(false);
         })
         .catch(() => {
-          setPostContent("Post not found.");
+          setPostTitle("Post not found");
+          setPostContent("");
           setLoading(false);
         });
     }
@@ -74,7 +79,8 @@ import ValueDisplay from "../components/ValueDisplay";
         <p>Loading...</p>
       ) : (
         <>
-          <h1>Post {id}</h1>
+        {/* Контент постов из Mock API */}
+          <h1>{postTitle}</h1>
           <p style={{ whiteSpace: "pre-line" }}>{postContent}</p>
         </>
       )}
